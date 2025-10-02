@@ -1,0 +1,40 @@
+<p>login !</p><div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-96">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+
+    <div class="mb-4">
+      <input
+        [(ngModel)]="email"
+        type="email"
+        placeholder="Email"
+        class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none"
+        [disabled]="loading">
+    </div>
+
+    <div class="mb-4">
+      <input
+        [(ngModel)]="password"
+        type="password"
+        placeholder="Password"
+        class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none"
+        [disabled]="loading"
+        (keyup.enter)="onLogin()">
+    </div>
+
+    <button
+      (click)="onLogin()"
+      [disabled]="loading"
+      class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 font-semibold transition disabled:bg-gray-400">
+      {{ loading ? 'Loading...' : 'Login' }}
+    </button>
+
+    <p class="mt-4 text-center text-gray-600">
+      No account?
+      <a routerLink="/register" class="text-blue-500 font-semibold hover:underline">Register</a>
+    </p>
+
+    <p *ngIf="errorMessage" class="mt-3 text-red-500 text-sm text-center">
+      {{ errorMessage }}
+    </p>
+  </div>
+</div>
